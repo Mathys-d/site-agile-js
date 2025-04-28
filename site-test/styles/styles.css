@@ -1,0 +1,33 @@
+body{
+    background-color:bisque;
+}
+
+h1{
+    color:teal ;
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+color:white ;
+display: flex;
+justify-content: center;
+border: solid 2px teal;
+border-radius: 4px;
+background-color: teal;
+}
+.joke{
+border: solid 2px teal;
+border-radius: 4px;
+color:teal ;
+margin: 10px;
+padding: 5px;
+}
+.btn{
+background-color:bisque;
+border: solid 2px teal;
+border-radius: 4px;
+color:teal ;
+margin: 10px;
+padding: 5px;
+}
