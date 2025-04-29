@@ -1,3 +1,7 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 body{
     background-color:bisque;
 }
@@ -15,7 +19,9 @@ justify-content: center;
 border: solid 2px teal;
 border-radius: 4px;
 background-color: teal;
+
 }
+
 .joke{
 border: solid 2px teal;
 border-radius: 4px;
@@ -23,11 +29,62 @@ color:teal ;
 margin: 10px;
 padding: 5px;
 }
+
 .btn{
+display: flex;
 background-color:bisque;
 border: solid 2px teal;
 border-radius: 4px;
 color:teal ;
 margin: 10px;
 padding: 5px;
+}
+
+
+
+
+
+ul{
+    list-style: none;
+    background: teal;
+}
+
+ul li{
+    display: inline;
+    position: relative;
+}
+
+ul li a {
+    display: block;
+    padding: 20px 25px;
+    color: bisque;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+ul li ul.dropdown li {
+    display: block;
+}
+
+ul li ul.dropdown{
+    width: 100%;
+    background:teal;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+ul li a:hover{
+    background:teal ;
+}
+
+ul li:hover ul.dropdown{
+    display: block;
+}
+
+.section-divider {
+    border-bottom: 2px solid teal;
+    margin: 20px ;
+
 }

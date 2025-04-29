@@ -3,7 +3,7 @@ const tab = {
     setup: [],
     delivery: []
 }
-
+let l=0;
 function newArticle(post) {
 
     const article = document.createElement('article')
@@ -14,20 +14,15 @@ function newArticle(post) {
     </div>`
     return article
 }
+//    <p>${l}</p>  connaitre le nb de pages 
 
-var btn = document.querySelector("input");
-btn.addEventListener("click", updateBtn);
-function updateBtn() {
-    if(btn.value === ){
-//finir le bouton 
-    }
-}
+
 
 
 
 async function main() {
 
-    for (i = 0; i <= feedPage; i++) {
+    for (i = 0; i < feedPage; i++) {
 
         const wrapper = document.querySelector('#lastPosts')
         const loader = document.createElement('p')
@@ -44,10 +39,11 @@ async function main() {
 
             const post = await r.json()
             loader.remove()
-            wrapper.append(newArticle(post))
+            wrapper.prepend(newArticle(post))
             tab.setup.push(post.setup)
             tab.delivery.push(post.delivery)
             console.log(tab)
+            l++;
         }
 
         catch (e) {
@@ -60,3 +56,8 @@ async function main() {
 }
 
 main()
+
+document.querySelector('button').addEventListener('click', function() {
+    // Your JavaScript code here
+    main()
+  });
