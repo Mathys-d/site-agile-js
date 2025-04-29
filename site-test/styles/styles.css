@@ -7,6 +7,7 @@ body{
 }
 
 h1{
+    padding-top: 10px;
     color:teal ;
     display: flex;
     justify-content: center;
@@ -16,29 +17,28 @@ h2{
 color:white ;
 display: flex;
 justify-content: center;
-border: solid 2px teal;
+border: solid 1px teal;
 border-radius: 4px;
 background-color: teal;
 
 }
 
-.joke{
-border: solid 2px teal;
-border-radius: 4px;
+.feedBox{
+border-bottom: solid 1px teal;
 color:teal ;
 margin: 10px;
 padding: 5px;
 }
 
-.btn{
-display: flex;
-background-color:bisque;
-border: solid 2px teal;
-border-radius: 4px;
-color:teal ;
-margin: 10px;
-padding: 5px;
+.feedBoxPlus{
+    display: none;
+    border: solid 1px teal;
+    border-radius: 4px;
+    color:teal ;
+    margin: 10px;
+    padding: 5px;
 }
+
 
 
 
@@ -50,8 +50,11 @@ ul{
 }
 
 ul li{
-    display: inline;
+    display: block;
     position: relative;
+    color: bisque;
+    text-align: center;
+    text-decoration: none;
 }
 
 ul li a {
@@ -86,5 +89,29 @@ ul li:hover ul.dropdown{
 .section-divider {
     border-bottom: 2px solid teal;
     margin: 20px ;
+
+}
+.feedBox.open .feedBoxPlus{
+    display: block;
+}
+p{
+    padding: 2px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    background-color:bisque;
+    color:teal ;
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    font-size: 25px;
+    }
+    
+.btn-drink{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
 
 }
