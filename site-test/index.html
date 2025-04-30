@@ -21,20 +21,46 @@
             </li>
         </ul>
     </nav>
-    <div class="btn-drink">   
-           <button class="btn" id="raf">Drinks &#x1F943;</button>
-    </div>
-    <div class="section-divider"></div>  
 
-    <div id="lastPosts">
-        <div id="infos">
-         
+    <div class="btn-drink">
+        <button class="btn" id="raf">Drinks &#x1F943;</button>
+    </div>
+
+    <div class="section-divider"></div>
+
+
+    <div class="monFormulaireDrks">
+        <form id="monFormulaire">
+            <label for="strDrink" >Name of Drinks :</label>
+            <input id="strDrink" name="Drks" required/>   
+            <BR></BR>
+            <label for="strCategory" >Category of Drinks :</label>
+            <input id="strCategory" name="Drks" required/> 
+            <br>  
+           <!-- <label for="strInstructions	" >instructions :</label><br>
+            <textarea id="strInstructions	" name="Drks" > 
+            </textarea>
+            <br>  -->
+            <br>
+            <label for="strIngredient1" > 1er ingredient:</label>
+            <input id="strIngredient1" name="Drks" required/> 
+            
+            <br> <button id="idDrksSubmit"onclick="send(event)" type="button">Submit</button>
+        </form>
+    </div>
+
+
+    <div class="section-divider"></div>
+
+    <div class="imagedefond">
+        <div id="lastPosts">
+            <div id="infos"></div>
         </div>
     </div>
-
     <script src="./scripts/scripts.js">
+
     </script>
 </body>
 
 </html>
-<!--beer    &#x1F37A; /  	COCKTAIL GLASS    &#x1F378;  /  	TROPICAL DRINK &#x1F379; / whisky 	&#x1F943;    -->
+<!--beer    &#x1F37A; /  	COCKTAIL GLASS    &#x1F378;  /  	TROPICAL DRINK &#x1F379; / whisky 	&#x1F943;   src="https://w7.pngwing.com/pngs/801/890/png-transparent-airplane-paper-plane-submit-button-cdr-angle-rectangle-thumbnail.png"    -->
