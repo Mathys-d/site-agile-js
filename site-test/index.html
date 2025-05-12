@@ -14,16 +14,16 @@
             <li>
                 <a href="#">Menu</a>
                 <ul class="dropdown">
-                    <li> <a href="./index.html">Drinks</a></li>
-                    <li> <a href="./gallery.html">Galery</a></li>
-                    <li> <a href="./jeux.html">Game</a></li>
+                    <li><a href="./index.html">Drinks</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./jeux.html">Game</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
     <div class="btn-drink">
-        <button class="btn" id="raf">Drinks &#x1F943;</button>
+        <button class="btn" id="raf" aria-label="Show drinks">Drinks 🍻</button>
     </div>
 
     <div class="section-divider"></div>
@@ -32,79 +32,81 @@
         <button class="btn-new" onclick="toggleForm()">Add</button>
     </div>
 
-        <div class="monFormulaireDrks" id="monFormulaireDrksID">
-            <div class="monFormulaireDrksPlus">
-                <form id="monFormulaire" name="formulairedrks">
-                    <div>
-                        <label for="strDrink" >Name: </label>
-                        <input type="text" id="strDrink" name="Drks" required/>   
-                    </div>
+    <div class="monFormulaireDrks" id="monFormulaireDrksID">
+        <div class="monFormulaireDrksPlus">
+            <form id="monFormulaire" name="formulairedrks">
+                <div>
+                    <label for="strDrink">Name:</label><br>
+                    <input type="text" id="strDrink" name="Drks" required>
+                </div>
 
-                        <br>  
+                <br>
 
-                    <div>
-                        <label for="strCategory" >Category: </label>
-                        <input type="text"  id="strCategory" name="Drks" required/> 
-                    </div>
+                <div>
+                    <label for="strCategory">Category:</label><br>
+                    <select name="Drks" id="strCategory" required>
+                        <option value="">select</option>
+                        <option value="Ordinary Drink">Ordinary Drink</option>
+                        <option value="Cocktail">Cocktail</option>
+                        <option value="Punch / Party Drink">Punch / Party Drink</option>
+                        <option value="Homemade Liqueur">Homemade Liqueur</option>
+                        <option value="Other / Unknown">Other / Unknown</option>
+                        <option value="Soft Drink">Soft Drink</option>
+                        <option value="Beer">Beer</option>
+                        <option value="Shake">Shake</option>
+                        <option value="Shot">Shot</option>
+                        <option value="Cocoa">Cocoa</option>
+                        <option value="Coffee / Tea">Coffee / Tea</option>
+                    </select>
+                </div>
 
-                        <br>
+                <br>
 
-                    
-                        <span>ingredient:</span>
-                        
-                        <br>
+                <div>
+                   
+                    <label for="dose">Ingredient / Quantity:</label> <br>
+                    <input type="number" id="dose" name="champs2" min="0" value="0" required>
 
-                        <label for="strIngredient1" ></label>
-                        <input type="number"  id="dose" name="champs2" required/>
+                    <select id="liste" name="champs3" required>
+                        <option value="">select</option>
+                        <option value="cl">cl</option>
+                        <option value="oz">oz</option>
+                        <option value="shot">shot</option>
+                        <option value="cup">cup</option>
+                        <option value="cup pure">cup pure</option>
+                        <option value="drops">drops</option>
+                        <option value="scoops">scoops</option>
+                        <option value="splashes">splashes</option>
+                        <option value="packages">packages</option>
+                    </select>
 
-                        <input list="champs3"  id="liste" name="champs3" required/> 
-                        <datalist id="champs3">
-                            <option value="oz"></option>
-                            <option value="shot"></option>
-                            <option value="cl"></option>
-                            <option value="dash"></option>
-                            <option value="cup"></option>
-                            <option value="tsp"></option>
-                            <option value="Chilled "></option>
-                            <option value="tblsp "></option>
-                            <option value="cup pure"></option>
-                            <option value="drops "></option>
-                            <option value="scoops "></option>
-                            <option value="splashes "></option>
-                            <option value="packages "></option>
-                        </datalist>
-                        <input type="text"  id="ingrd" name="champs1" required/> 
-                        <button type="button" onclick="ajout(this);">+</button>
-                    
+                    <input type="text" id="ingrd" name="champs1" value="ingredient" required>
+                    <button type="button" onclick="ajout(this);" aria-label="Add ingredient">+</button>
+                </div>
 
-                        <br>
+                <br>
 
-                    <div>
-                        <label for="strInstructions	" >instructions :</label><br>
-                        <textarea id="strInstructions	" name="Drks" > 
-                        </textarea>
-                    </div> 
+                <div>
+                    <label for="strInstructions">Instructions:</label><br>
+                    <textarea id="strInstructions" name="Drks"></textarea>
+                </div>
 
-                        <br>  
+                <br>
 
-                    <div>
-                        <button id="idDrksSubmit"onclick="send(event)" type="button">Submit</button>
-                    </div>
-                </form>
-            </div>
+                <div>
+                    <button id="idDrksSubmit" onclick="send(event)" type="button">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
-
 
     <div class="imagedefond">
         <div id="lastPosts">
             <div id="infos"></div>
         </div>
     </div>
-    <script src="./scripts/scripts.js">
 
-    </script>
+    <script src="./scripts/scripts.js"></script>
 </body>
 
 </html>
-<!--beer    &#x1F37A; /  	COCKTAIL GLASS    &#x1F378;  /  	TROPICAL DRINK &#x1F379; / whisky 	&#x1F943;   src="https://w7.pngwing.com/pngs/801/890/png-transparent-airplane-paper-plane-submit-button-cdr-angle-rectangle-thumbnail.png"    -->
