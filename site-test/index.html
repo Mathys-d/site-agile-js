@@ -28,29 +28,73 @@
 
     <div class="section-divider"></div>
 
-
-    <div class="monFormulaireDrks">
-        <form id="monFormulaire">
-            <label for="strDrink" >Name of Drinks :</label>
-            <input id="strDrink" name="Drks" required/>   
-            <BR></BR>
-            <label for="strCategory" >Category of Drinks :</label>
-            <input id="strCategory" name="Drks" required/> 
-            <br>  
-           <!-- <label for="strInstructions	" >instructions :</label><br>
-            <textarea id="strInstructions	" name="Drks" > 
-            </textarea>
-            <br>  -->
-            <br>
-            <label for="strIngredient1" > 1er ingredient:</label>
-            <input id="strIngredient1" name="Drks" required/> 
-            
-            <br> <button id="idDrksSubmit"onclick="send(event)" type="button">Submit</button>
-        </form>
+    <div class="btn-drink">
+        <button class="btn-new" onclick="toggleForm()">Add</button>
     </div>
 
+        <div class="monFormulaireDrks" id="monFormulaireDrksID">
+            <div class="monFormulaireDrksPlus">
+                <form id="monFormulaire" name="formulairedrks">
+                    <div>
+                        <label for="strDrink" >Name: </label>
+                        <input type="text" id="strDrink" name="Drks" required/>   
+                    </div>
 
-    <div class="section-divider"></div>
+                        <br>  
+
+                    <div>
+                        <label for="strCategory" >Category: </label>
+                        <input type="text"  id="strCategory" name="Drks" required/> 
+                    </div>
+
+                        <br>
+
+                    
+                        <span>ingredient:</span>
+                        
+                        <br>
+
+                        <label for="strIngredient1" ></label>
+                        <input type="number"  id="dose" name="champs2" required/>
+
+                        <input list="champs3"  id="liste" name="champs3" required/> 
+                        <datalist id="champs3">
+                            <option value="oz"></option>
+                            <option value="shot"></option>
+                            <option value="cl"></option>
+                            <option value="dash"></option>
+                            <option value="cup"></option>
+                            <option value="tsp"></option>
+                            <option value="Chilled "></option>
+                            <option value="tblsp "></option>
+                            <option value="cup pure"></option>
+                            <option value="drops "></option>
+                            <option value="scoops "></option>
+                            <option value="splashes "></option>
+                            <option value="packages "></option>
+                        </datalist>
+                        <input type="text"  id="ingrd" name="champs1" required/> 
+                        <button type="button" onclick="ajout(this);">+</button>
+                    
+
+                        <br>
+
+                    <div>
+                        <label for="strInstructions	" >instructions :</label><br>
+                        <textarea id="strInstructions	" name="Drks" > 
+                        </textarea>
+                    </div> 
+
+                        <br>  
+
+                    <div>
+                        <button id="idDrksSubmit"onclick="send(event)" type="button">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <div class="imagedefond">
         <div id="lastPosts">

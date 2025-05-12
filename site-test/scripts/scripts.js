@@ -39,13 +39,12 @@ const send = (event) => {
     let newDrinks = document.querySelector('#strDrink').value;
     let newCategory = document.querySelector('#strCategory').value;
    // let newInstructions = document.querySelector('#strInstructions').value;
-    let newIngredient1 = document.querySelector('#strIngredient1').value;
+    let newIngredient1 = document.querySelector('#ingrd').value;
 
-    if (newDrinks,newCategory,/*newInstructions*/ strIngredient1) {
+    if (newDrinks,newCategory,/*newInstructions*/ ingrd) {
         const wrapper = document.querySelector('#lastPosts');
-        wrapper.prepend(newArticle({"strDrink":newDrinks, "strCategory" :newCategory /*, "strInstructions" :newInstructions*/ , "strIngredient1":newIngredient1 }))
+        wrapper.prepend(newArticle({"strDrink":newDrinks, "strCategory" :newCategory /*, "strInstructions" :newInstructions*/ , "ingrd":newIngredient1 }))
         console.log("newDrinks : ", newDrinks);
-    
     }
 }
 
@@ -87,7 +86,7 @@ async function main() {
             loader.style.color = 'red'
             break;
         }
-        await wait(3000)
+        await wait(500)
         console.log("après mon délai")
     }
 
@@ -107,57 +106,75 @@ function toggleInfo(element) {
     element.classList.toggle("open");
 }
 
+function toggleForm() {
+    let ouvrir = document.getElementById("monFormulaireDrksID");
+    if (ouvrir.style.display === "block") {
+        ouvrir.style.display = "none";
+    } else {
+        ouvrir.style.display = "block";
+      }    
+    console.log("adfadzdza")
+}
+
 main();
 
 
+function ajout(element){
+
+    let formulaire = window.document.formulairedrks;
+       
+    let bloc1 = document.createElement("span");
+    let bloc2 = document.createElement("span");
+    let bloc3 = document.createElement("span");
 
 
-const  pas_regarder= {
-    strGlass:[],
-    strInstructions	:[],
-    strIngredient1:[],
-    strIngredient2:[],
-    strIngredient3:[],
-    strIngredient4:[],
-    strIngredient5:[],
-    strIngredient6:[],
-    strIngredient7:[],
-    strIngredient8:[],
-    strIngredient9:[],
-    strIngredient10:[],
-    strIngredient11:[],
-    strIngredient12:[],
-    strIngredient13:[],
-    strIngredient14:[],
-    strIngredient15:[],
-    strIngredient1:[],
-    strIngredient2:[],
-    strIngredient3:[],
-    strIngredient4:[],
-    strIngredient5:[],
-    strIngredient6:[],
-    strIngredient7:[],
-    strIngredient8:[],
-    strIngredient9:[],
-    strIngredient10:[],
-    strIngredient11:[],
-    strIngredient12:[],
-    strIngredient13:[],
-    strIngredient14:[],
-    strIngredient15:[],
-    strMeasure1	:[],
-    strMeasure2	:[],
-    strMeasure3	:[],
-    strMeasure4	:[],
-    strMeasure5	:[],
-    strMeasure6	:[],
-    strMeasure7	:[],
-    strMeasure8	:[],
-    strMeasure9	:[],
-    strMeasure10:[],
-    strMeasure11:[],
-    strMeasure12:[],
-    strMeasure13:[],
-    strMeasure14:[],	
-    strMeasure15:[],
+    let champ1 = document.createElement("input");
+    champ1.name = "champs1";
+    champ1.type = "text";
+    champ1.id = "ingrd";
+
+    let champ2 = document.createElement("input");
+    champ2.name = "champs2";
+    champ2.type = "number";
+    champ2.id = "dose";
+    
+    let champ3 = document.createElement("input");
+    champ3.type ="list" 
+    champ3.list="champs3" 
+    champ3.id ="liste" 
+    champ3.name ="champs3"
+
+
+    let sup = document.createElement("input");
+    sup.value = "X";
+    sup.type = "button";
+    sup.id = "btn";  
+
+
+    
+    sup.onclick = function onclick(event)
+    {suppression(this);};
+
+    bloc2.appendChild(champ2);
+    bloc3.appendChild(champ3);
+    bloc1.appendChild(champ1);
+
+    element.after(bloc1);
+    element.after(bloc3);
+    element.after(bloc2);
+    element.after(sup); 
+
+    
+
+    let br = document.createElement("br");
+    element.after(br);
+}
+
+
+function suppression(element){
+    let formulaire = window.document.formulairedrks;
+    formulaire.removeChild(element.nextSibling);
+    formulaire.removeChild(element.nextSibling);
+    formulaire.removeChild(element.nextSibling);
+    formulaire.removeChild(element);
 }
