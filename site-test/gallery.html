@@ -1,30 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <title>Gallery</title>
 </head>
-
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a href="#">Menu</a>
-                <ul class="dropdown">
-                    <li> <a href="./index.html">Drinks</a></li>
-                    <li> <a href="./gallery.html">Galery</a></li>
-                    <li> <a href="./jeux.html">Game</a></li>
-                </ul>
-            </li>
+    <style>
+        button{
+            margin-left: 1em;
+        }
+        #gallery {
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .mosaic {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .column {
+            padding:100px;
+            margin-left: 20% ;
+            margin-right: 20% ;
+            display: flex;
+            flex-direction: column;
+        }       
+
+        #gallery img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .mosaic {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+  <nav>
+    <ul>
+      <li>
+        <a href="#">Menu</a>
+        <ul class="dropdown">
+          <li><a href="./index.html">Drinks</a></li>
+          <li><a href="./gallery.html">Gallery</a></li>
+          <li><a href="./jeux.html">Game</a></li>
         </ul>
-    </nav>
-    <h1>Gallery</h1>
-    <div class="section-divider"></div>  
-    <div>
-        <!-- ajouter les images des boissons ici-->
-    </div>
+      </li>
+    </ul>
+  </nav>
+
+  <h1>Gallery</h1>
+  <div class="section-divider"></div>
+  <button type="button" onclick="toggleImg()">Column</button>
+  <div id="gallery" class="mosaic"></div>
+
+
+
+
+  <script>
+    const feedPage = 3; 
+    const gallery = document.getElementById('gallery');
+  
+    async function fetchImages() {
+      for (let i = 0; i < feedPage; i++) {
+        try {
+          const res = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+          const data = await res.json();
+          const drink = data.drinks[0];
+  
+          const img = document.createElement('img');
+          img.src = drink.strDrinkThumb;
+          img.alt = drink.strDrink;
+          gallery.appendChild(img);
+  
+          await new Promise(resolve => setTimeout(resolve, 300)); // petite pause pour éviter de surcharger
+        } catch (e) {
+          console.error("Erreur lors du chargement de l'image :", e);
+        }
+      }
+    }
+  
+    function toggleImg() {
+    const gallery = document.getElementById("gallery");
+    const btn = document.querySelector("button");
+
+    if (gallery.classList.contains("mosaic")) {
+        gallery.classList.remove("mosaic");
+        gallery.classList.add("column");
+        btn.innerText = "Mosaic";
+    } else {
+        gallery.classList.remove("column");
+        gallery.classList.add("mosaic");
+        btn.innerText = "Column";
+    }
+}
+
+
+    window.onload = fetchImages;
+
+  </script>
+  
 </body>
 </html>

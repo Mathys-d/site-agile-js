@@ -1,67 +1,16 @@
-let feedPage = 1;
-
-const tab = {
-    strDrink: [],
-    strCategory: [],
-    dose: [],
-    liste: [],
-    ingrd: [],
-    strInstructions: [],
-};
-
+let feedPage = 10;
+let num = 1;
 let cpt = 0;
 let l = 0;
 let start = 0;
 
-function newArticle(response) {
-    console.log("reponse", response.strDrink);
-    const article = document.createElement('article');
-    article.innerHTML = `
-        <div class="feedBox" onclick="toggleInfo(this)">
-            <p>${response.strDrink}</p>
-            <p>${response.strCategory}</p> 
-            <div class="feedBoxPlus">
-                ${[...Array(15).keys()].map(i => {
-                    const ingredient = response[`strIngredient${i + 1}`];
-                    const measure = response[`strMeasure${i + 1}`];
-                    return ingredient ? `<p>${measure ? measure + " of " : ""}${ingredient}</p>` : "";
-                }).join("")}
-                ${response.strInstructions ? `<p>Instructions: ${response.strInstructions}</p>` : ""}
-            </div>
-        </div>`;
-    return article;
-}
 
-function send(event) {
-    event.preventDefault();
-
-    const drink = document.querySelector('#strDrink').value.trim();
-    const category = document.querySelector('#strCategory').value;
-    const instructions = document.querySelector('#strInstructions').value.trim();
-    const ingredient = document.querySelector('#ingrd').value.trim();
-    const unit = document.querySelector('#liste').value;
-    const quantity = document.querySelector('#dose').value;
-
-    if (drink && category && instructions && ingredient && unit && quantity) {
-        const measure = `${quantity} ${unit}`;
-        const wrapper = document.querySelector('#lastPosts');
-        wrapper.prepend(newArticle({
-            strDrink: drink,
-            strCategory: category,
-            strMeasure1: measure,
-            strIngredient1: ingredient,
-            strInstructions: instructions
-        }));
-    }
-}
-
-const wait = (delay = 1000) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve();
-        }, delay);
-    });
+const tab = {
+    strDrink: [],
+    strCategory: [],
+    strDrinkThumb: [],
 };
+
 
 async function main() {
     for (cpt = 0; cpt < feedPage; cpt++) {
@@ -78,25 +27,101 @@ async function main() {
                     wrapper.prepend(newArticle(response.drinks[0]));
                     tab.strDrink.push(response.drinks[0].strDrink);
                     tab.strCategory.push(response.drinks[0].strCategory);
+                    tab.strDrinkThumb.push(response.drinks[0].strDrinkThumb);
                 });
         } catch (e) {
             loader.innerText = 'impossible a charger';
             loader.style.color = 'red';
             break;
         }
-
         await wait(500);
-        console.log("après mon délai");
     }
 }
 
+
+function newArticle(response) {
+    const article = document.createElement('article');
+    article.innerHTML = `
+        <div class="feedBox" onclick="toggleInfo(this)">
+            <p>${response.strDrink}</p>
+            <p>${response.strCategory}</p> 
+            <div class="feedBoxPlus">
+                ${[...Array(15).keys()].map(i => {
+        const ingredient = response[`strIngredient${i + 1}`];
+        const measure = response[`strMeasure${i + 1}`];
+        return ingredient ? `<p>${measure ? measure + " of " : ""}${ingredient}</p>` : "";
+    }).join("")}
+                ${response.strInstructions ? `<p>Instructions: ${response.strInstructions}</p>` : ""}
+            </div>
+        </div>`;
+    return article;
+}
+
+
+function send(event) {
+    event.preventDefault();
+
+    const drink = document.querySelector('#strDrink').value.trim();
+    const category = document.querySelector('#strCategory').value;
+    const instructions = document.querySelector('#strInstructions').value.trim();
+    const wrapper = document.querySelector('#lastPosts');
+
+    if (!drink || !category || !instructions) {
+        alert("Please fill out the required fields.");
+        return;
+    }
+
+    const ingredients = [];
+    for (let i = 0; i < num; i++) {
+        const ing = document.querySelector(`#ingrd${i}`);
+        const dose = document.querySelector(`#dose${i}`);
+        const unit = document.querySelector(`#liste${i}`);
+
+        if (ing && ing.value.trim() !== "" && dose && unit && unit.value !== "") {
+            ingredients.push({
+                [`strIngredient${ingredients.length + 1}`]: ing.value.trim(),
+                [`strMeasure${ingredients.length + 1}`]: `${dose.value} ${unit.value}`
+            });
+        }
+    }
+
+    const drinkData = {
+        strDrink: drink,
+        strCategory: category,
+        strInstructions: instructions
+    };
+
+    ingredients.forEach(obj => {
+        Object.assign(drinkData, obj);
+    });
+
+    wrapper.prepend(newArticle(drinkData));
+
+    document.getElementById('monFormulaire').reset();
+    document.getElementById('monFormulaireDrksID').style.display = 'none';
+
+    // Réinitialiser les champs dynamiques sauf le premier
+    const groupes = document.querySelectorAll('[id^="ingrd"]:not(#ingrd0), [id^="dose"]:not(#dose0), [id^="liste"]:not(#liste0)');
+    groupes.forEach(el => el.closest("div").remove()); //permeet de chercher le premier element el paren de la div 
+    num = 1;
+}
+
+
+const wait = (delay = 1000) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    });
+};
+
+
+
 document.querySelector('#raf').addEventListener('click', function () {
     let allChildrens = document.querySelectorAll(".feedBox");
-    console.log(allChildrens);
-    for (let i = 0; i < allChildrens.length; i++) {
-        allChildrens[i].remove();
-        main();
-    }
+    allChildrens.forEach(el => el.remove());
+    main();
+
 });
 
 function toggleInfo(element) {
@@ -111,10 +136,6 @@ function toggleForm() {
         ouvrir.style.display = "block";
     }
 }
-
-main();
-
-let num = 1;
 
 function ajout(element) {
     let formulaire = window.document.formulairedrks;
@@ -147,7 +168,7 @@ function ajout(element) {
     champ3.required = true;
 
     const options = [
-        "cl", "oz", "shot", "cup", "cup pure",
+        "select", "cl", "oz", "shot", "cup", "cup pure",
         "drops", "scoops", "splashes", "packages"
     ];
 
@@ -173,3 +194,13 @@ function suppression(element) {
     element.remove();
     num--;
 }
+
+window.onload = function () {
+    const container = document.getElementById("ingredientContainer");
+    ajout(container);
+};
+
+main();
+// fin de la page feed 
+
+
