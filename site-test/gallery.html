@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/styles.css" />
   <title>Gallery</title>
+  <style>
+    button {
+      margin-left: 1em;
+    }
+
+    #gallery {
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .mosaic {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .column {
+      padding: 100px;
+      margin-left: 20%;
+      margin-right: 20%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+      padding: 10px;
+    }
+
+    #booouuuutttonnn{position : absolute;
+            top :5px;
+            right :5px;
+            background-color :rgba(0,0,0,0.5);
+            color :white;
+            border :none;
+            cursor :pointer;
+            border-radius:50%;
+            width:24px;
+            height:24px;}
+  </style>
 </head>
+
 <body>
-    <style>
-        button{
-            margin-left: 1em;
-        }
-        #gallery {
-            gap: 10px;
-            padding: 20px;
-        }
-
-        .mosaic {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        }
-
-        .column {
-            padding:100px;
-            margin-left: 20% ;
-            margin-right: 20% ;
-            display: flex;
-            flex-direction: column;
-        }       
-
-        #gallery img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .mosaic {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-        }
-        
-        .column {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-    </style>
   <nav>
     <ul>
       <li>
@@ -61,54 +68,95 @@
 
   <h1>Gallery</h1>
   <div class="section-divider"></div>
+
   <button type="button" onclick="toggleImg()">Column</button>
+  <button type="button" onclick="toggleNewImg()">More</button>
+
+  <form id="imageForm">
+    <input type="file" id="imageInput" accept="image/*" required />
+    <button type="submit">Add to the Gallery</button>
+  </form>
+
   <div id="gallery" class="mosaic"></div>
 
-
-
-
   <script>
-    const feedPage = 3; 
+    const feedPage = 3;
     const gallery = document.getElementById('gallery');
-  
+
     async function fetchImages() {
       for (let i = 0; i < feedPage; i++) {
         try {
           const res = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
           const data = await res.json();
           const drink = data.drinks[0];
-  
+
           const img = document.createElement('img');
           img.src = drink.strDrinkThumb;
           img.alt = drink.strDrink;
           gallery.appendChild(img);
-  
-          await new Promise(resolve => setTimeout(resolve, 300)); // petite pause pour éviter de surcharger
+
+          await new Promise(resolve => setTimeout(resolve, 300)); 
         } catch (e) {
           console.error("Erreur lors du chargement de l'image :", e);
         }
       }
     }
-  
-    function toggleImg() {
-    const gallery = document.getElementById("gallery");
-    const btn = document.querySelector("button");
 
-    if (gallery.classList.contains("mosaic")) {
+    function toggleImg() {
+      const gallery = document.getElementById("gallery");
+      const btn = document.querySelector("button");
+
+      if (gallery.classList.contains("mosaic")) {
         gallery.classList.remove("mosaic");
         gallery.classList.add("column");
         btn.innerText = "Mosaic";
-    } else {
+      } else {
         gallery.classList.remove("column");
         gallery.classList.add("mosaic");
         btn.innerText = "Column";
+      }
     }
-}
+
+    function toggleNewImg() {
+      fetchImages();
+    }
+
+    document.getElementById('imageForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+
+            const container = document.createElement('div');
+            container.style.position = "relative";
+
+            const img = document.createElement('img');
+            img.src = event.target.result;
+            img.alt = "Image utilisateur";
+
+            const closeButton = document.createElement('button');
+            closeButton.innerText = 'X';
+            closeButton.id = 'booouuuutttonnn';
 
 
-    window.onload = fetchImages;
+            closeButton.onclick = function () {
+            container.remove();
+            };
 
+            container.appendChild(img);
+            container.appendChild(closeButton);
+            document.getElementById('gallery').appendChild(container);
+        };
+        reader.readAsDataURL(file);
+        });
+
+
+    fetchImages();
   </script>
-  
 </body>
+
 </html>

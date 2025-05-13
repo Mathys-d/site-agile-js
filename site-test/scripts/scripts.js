@@ -20,23 +20,26 @@ async function main() {
         wrapper.prepend(loader);
 
         try {
-            fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-                .then(response => response.json())
-                .then(response => {
-                    loader.remove();
-                    wrapper.prepend(newArticle(response.drinks[0]));
-                    tab.strDrink.push(response.drinks[0].strDrink);
-                    tab.strCategory.push(response.drinks[0].strCategory);
-                    tab.strDrinkThumb.push(response.drinks[0].strDrinkThumb);
-                });
+            const res = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+            const data = await res.json();
+            loader.remove();
+
+            const drink = data.drinks[0];
+            wrapper.prepend(newArticle(drink));
+
+            tab.strDrink.push(drink.strDrink);
+            tab.strCategory.push(drink.strCategory);
+            tab.strDrinkThumb.push(drink.strDrinkThumb);
         } catch (e) {
-            loader.innerText = 'impossible a charger';
+            loader.innerText = 'Impossible à charger';
             loader.style.color = 'red';
             break;
         }
+
         await wait(500);
     }
 }
+
 
 
 function newArticle(response) {
@@ -200,7 +203,27 @@ window.onload = function () {
     ajout(container);
 };
 
-main();
-// fin de la page feed 
+
+
+
+function createGallery() {
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = ''; 
+
+    tab.strDrinkThumb.forEach(url => {
+        const image = document.createElement('img');
+        image.src = url;
+        image.alt = 'Cocktail image';
+        image.style.width = "150px";
+        image.style.margin = "10px";
+        gallery.appendChild(image);
+    });
+}
+
+main().then(() => {
+    if (document.getElementById('gallery')) {
+        createGallery();
+    }
+});
 
 
