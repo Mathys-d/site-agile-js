@@ -1,4 +1,4 @@
-const feedPage = 5;
+const feedPage = 0;
     const gallery = document.getElementById('gallery');
 
     async function fetchImages() {

@@ -6,7 +6,7 @@
 
 body {
     background-color: rgb(235, 225, 211);
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
@@ -25,14 +25,16 @@ h2 {
     background-color: rgba(235, 225, 211, 0.7);
 }
 
-.feedBox {
+.feedBox,
+#monFormulaireDrksID {
     border-bottom: 1px solid teal;
     color: teal;
     padding: 25px;
     background-color: rgba(235, 225, 211, 0.7);
 }
 
-.feedBoxPlus {
+.feedBoxPlus,
+#monFormulaireDrksPlus {
     display: none;
     border: 1px solid teal;
     border-radius: 10px;
@@ -43,22 +45,6 @@ h2 {
 
 .feedBox.open .feedBoxPlus {
     display: block;
-}
-
-#monFormulaireDrksID {
-    display: none;
-    border-bottom: 1px solid teal;
-    color: teal;
-    padding: 25px;
-    background-color: rgba(235, 225, 211, 0.7);
-}
-
-#monFormulaireDrksPlus {
-    border: 1px solid teal;
-    border-radius: 10px;
-    color: teal;
-    padding: 5px;
-    background-color: rgba(235, 225, 211, 0.7);
 }
 
 ul {
@@ -79,63 +65,54 @@ ul li a {
     font-size: 20px;
 }
 
-ul li ul.dropdown li {
-    display: block;
-}
-
 ul li ul.dropdown {
+    display: none;
     width: 100%;
     background: teal;
     position: absolute;
     z-index: 999;
-    display: none;
-}
-
-ul li a:hover {
-    background: teal;
 }
 
 ul li:hover ul.dropdown {
     display: block;
 }
 
+ul li ul.dropdown li {
+    display: block;
+}
+
+ul li a:hover {
+    background: teal;
+}
+
 .section-divider {
     border-bottom: 2px solid teal;
-    margin: 20px;
+    margin: 20px 0;
 }
 
-.btn {
-    background-color: rgba(235, 225, 211);
-    color: teal;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-
-}
-
+.btn,
 .btn-new {
     background-color: rgba(235, 225, 211);
     color: teal;
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
-    border-radius: 0px;
+    border: none;
 }
 
 .btn {
     font-size: 35px;
-    border: none;
+}
+
+.btn-new {
+    border-bottom: solid 1px teal;
+    border-radius: 0;
 }
 
 .btn-drink {
     margin: 10px;
     display: flex;
     justify-content: center;
-}
-
-.btn-new {
-    border: none;
-    border-bottom: solid teal;
 }
 
 .imagedefond {
@@ -146,9 +123,15 @@ ul li:hover ul.dropdown {
     position: relative;
 }
 
-input {
-    padding: 6px 4px;
+input,
+select,
+textarea,
+button {
     border-radius: 7px;
+    padding: 6px 8px;
+}
+
+input {
     max-width: 40%;
 }
 
@@ -157,22 +140,14 @@ input[id^="dose"] {
 }
 
 select {
-    padding: 6px 8px;
-    border-radius: 7px;
-    margin-right: 5px;
+    margin: 2px 5px 2px 3px;
 }
 
 textarea {
-    padding: 6px 4px;
-    border-radius: 7px;
     width: 100%;
     min-height: 100px;
     max-height: 60%;
     max-width: 100%;
-}
-
-select {
-    margin: 2px 5px 2px 3px;
 }
 
 button {
@@ -180,7 +155,7 @@ button {
     border-radius: 5px;
 }
 
-/*---------------------------------------------------------------------------------*/
+/*---------------------------------- Galerie ----------------------------------*/
 #gallery {
     gap: 10px;
     padding: 20px;
@@ -188,13 +163,17 @@ button {
 
 .mosaic {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat( 5,1fr);
+    img{
+        width :200px;
+        height: 200px;
+        object-fit: cover;
+    }
 }
 
 .column {
     padding: 100px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin: 0 20%;
     display: flex;
     flex-direction: column;
 }
@@ -218,38 +197,36 @@ button {
     height: 24px;
 }
 
+/*---------------------------------- Carousel ----------------------------------*/
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-height: 40%;
+}
 
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      max-width: 350px;
-      margin: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      max-height: 40%;
-    }
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
 
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100%;
-    }
+.slide {
+    min-width: 100%;
+    transition: opacity 1s ease;
+}
 
-    .slide {
-      min-width: 100%;
-      transition: opacity 1s ease;
-    }
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-    .slide img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-
-
-
+/*---------------------------------- Responsive ----------------------------------*/
 @media screen and (min-width: 800px) {
     textarea {
         width: 70%;
@@ -258,5 +235,4 @@ button {
     input[id^="dose"] {
         width: 6%;
     }
-
 }

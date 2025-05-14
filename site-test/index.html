@@ -2,94 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <title>Drink App</title>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a href="#">Menu</a>
-                <ul class="dropdown">
-                    <li><a href="./index.html">Drinks</a></li>
-                    <li><a href="./gallery.html">Gallery</a></li>
-                    <li><a href="./jeux.html">Game</a></li>
-                </ul>
-            </li>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li>
+        <a href="#">Menu</a>
+        <ul class="dropdown">
+          <li><a href="./index.html">Drinks</a></li>
+          <li><a href="./gallery.html">Gallery</a></li>
+          <li><a href="./jeux.html">Game</a></li>
         </ul>
-    </nav>
+      </li>
+    </ul>
+  </nav>
 
-    <div class="btn-drink">
-        <button class="btn" id="raf" aria-label="Show drinks">Drinks 🍻</button>
-    </div>
+  <!-- Buttons -->
+  <div class="btn-drink">
+    <button class="btn" id="raf" aria-label="Show random drinks">Drinks 🍻</button>
+  </div>
 
-    <div class="section-divider"></div>
+  <div class="section-divider"></div>
 
-    <div class="btn-drink">
-        <button class="btn-new" onclick="toggleForm()">Add</button>
-    </div>
+  <div class="btn-drink">
+    <button class="btn-new" onclick="toggleForm()" aria-label="Open drink form">Add</button>
+  </div>
 
-    <div class="monFormulaireDrks" id="monFormulaireDrksID">
-        <div class="monFormulaireDrksPlus">
-            <form id="monFormulaire" name="formulairedrks">
-                <div>
-                    <label for="strDrink">Name:</label><br>
-                    <input type="text" id="strDrink" name="Drks" required>
-                </div>
-
-                <br>
-
-                <div>
-                    <label for="strCategory">Category:</label><br>
-                    <select name="Drks" id="strCategory" required>
-                        <option value="">select</option>
-                        <option value="Ordinary Drink">Ordinary Drink</option>
-                        <option value="Cocktail">Cocktail</option>
-                        <option value="Punch / Party Drink">Punch / Party Drink</option>
-                        <option value="Homemade Liqueur">Homemade Liqueur</option>
-                        <option value="Other / Unknown">Other / Unknown</option>
-                        <option value="Soft Drink">Soft Drink</option>
-                        <option value="Beer">Beer</option>
-                        <option value="Shake">Shake</option>
-                        <option value="Shot">Shot</option>
-                        <option value="Cocoa">Cocoa</option>
-                        <option value="Coffee / Tea">Coffee / Tea</option>
-                    </select>
-                </div>
-
-                <br>
-
-                <div id="ingredientContainer">
-                    <button type="button" onclick="ajout(this);" aria-label="Add ingredient">+</button>
-                </div>
-                
-
-                <br>
-
-                <div>
-                    <label for="strInstructions">Instructions:</label><br>
-                    <textarea id="strInstructions" name="Drks"></textarea>
-                </div>
-
-                <br>
-
-                <div>
-                    <button id="idDrksSubmit" onclick="send(event)" type="button">Submit</button>
-                </div>
-            </form>
+  <!-- Formulaire caché -->
+  <div class="monFormulaireDrks" id="monFormulaireDrksID" style="display: none;">
+    <div class="monFormulaireDrksPlus">
+      <form id="monFormulaire">
+        <!-- Nom du drink -->
+        <div>
+          <label for="strDrink">Name:</label><br />
+          <input type="text" id="strDrink" required />
         </div>
-    </div>
 
-    <div class="imagedefond">
-        <div id="lastPosts">
-            <div id="infos"></div>
+        <br />
+
+        <!-- Catégorie -->
+        <div>
+          <label for="strCategory">Category:</label><br />
+          <select id="strCategory" required>
+            <option value="">select</option>
+            <option value="Ordinary Drink">Ordinary Drink</option>
+            <option value="Cocktail">Cocktail</option>
+            <option value="Punch / Party Drink">Punch / Party Drink</option>
+            <option value="Homemade Liqueur">Homemade Liqueur</option>
+            <option value="Other / Unknown">Other / Unknown</option>
+            <option value="Soft Drink">Soft Drink</option>
+            <option value="Beer">Beer</option>
+            <option value="Shake">Shake</option>
+            <option value="Shot">Shot</option>
+            <option value="Cocoa">Cocoa</option>
+            <option value="Coffee / Tea">Coffee / Tea</option>
+          </select>
         </div>
-    </div>
 
-    <script src="./scripts/scripts.js"></script>
+        <br />
+
+        <!-- Ingrédients -->
+        <div id="ingredientContainer">
+          <button type="button" onclick="ajout(this);" aria-label="Add ingredient">+</button>
+        </div>
+
+        <br />
+
+        <!-- Instructions -->
+        <div>
+          <label for="strInstructions">Instructions:</label><br />
+          <textarea id="strInstructions" required></textarea>
+        </div>
+
+        <br />
+
+        <!-- Soumission -->
+        <div>
+          <button id="idDrksSubmit" type="button" onclick="send(event)">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Zone des drinks générés -->
+  <div class="imagedefond">
+    <div id="lastPosts">
+      <div id="infos"></div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="./scripts/scripts.js"></script>
 </body>
 
 </html>
