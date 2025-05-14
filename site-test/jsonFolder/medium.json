@@ -1,0 +1,84 @@
+{
+  "memory": {
+    "difficulty": "hard",
+    "nbPaires": 15,
+    "apiLink": "https://mocki.io/v1/15d570fe-2dab-493e-886c-f950c632b18f ",
+    "cartes": [
+      {
+        "id": 1,
+        "image": "https://images.unsplash.com/photo-1582571352032-3c9e3f0e1f6a",
+        "name": "Mojito"
+      },
+      {
+        "id": 2,
+        "image": "https://images.unsplash.com/photo-1576871337632-6c9c9b0f4b4a",
+        "name": "Martini"
+      },
+      {
+        "id": 3,
+        "image": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg",
+        "name": "Piña Colada"
+      },
+      {
+        "id": 4,
+        "image": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+        "name": "Bloody Mary"
+      },
+      {
+        "id": 5,
+        "image": "https://images.pexels.com/photos/553823/pexels-photo-553823.jpeg",
+        "name": "Cosmopolitan"
+      },
+      {
+        "id": 6,
+        "image": "https://images.unsplash.com/photo-1576871337632-6c9c9b0f4b4a",
+        "name": "Mai Tai"
+      },
+      {
+        "id": 7,
+        "image": "https://images.unsplash.com/photo-1510626176961-4bfb7e81b83b",
+        "name": "Negroni"
+      },
+      {
+        "id": 8,
+        "image": "https://images.unsplash.com/photo-1601218873303-9fe0804ff9f5",
+        "name": "Old Fashioned"
+      },
+      {
+        "id": 9,
+        "image": "https://images.pexels.com/photos/161772/aperol-spritz-cocktail-drink-aperitif-161772.jpeg",
+        "name": "Aperol Spritz"
+      },
+      {
+        "id": 10,
+        "image": "https://images.unsplash.com/photo-1598515214218-c477a2e64a2b",
+        "name": "Whiskey Sour"
+      },
+      {
+        "id": 11,
+        "image": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg",
+        "name": "Caipirinha"
+      },
+      {
+        "id": 12,
+        "image": "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg",
+        "name": "Manhattan"
+      },
+      {
+        "id": 13,
+        "image": "https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg",
+        "name": "Gin Tonic"
+      },
+      {
+        "id": 14,
+        "image": "https://images.pexels.com/photos/5946970/pexels-photo-5946970.jpeg",
+        "name": "Tequila Sunrise"
+      },
+      {
+        "id": 15,
+        "image": "https://images.pexels.com/photos/678720/pexels-photo-678720.jpeg",
+        "name": "Long Island Iced Tea"
+      }
+    ]
+  }
+}

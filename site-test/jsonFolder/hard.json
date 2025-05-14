@@ -1,0 +1,60 @@
+{
+  "memory": {
+    "difficulty": "hard",
+    "nbPaires": 25,
+    "apiLink": "https://mocki.io/v1/15d570fe-2dab-493e-886c-f950c632b18f ",
+    "cartes": [
+      { "id": 1, "image": "https://images.unsplash.com/photo-1582571352032-3c9e3f0e1f6a", "name": "Mojito" },
+      
+      { "id": 2, "image": "https://images.unsplash.com/photo-1576871337632-6c9c9b0f4b4a", "name": "Martini" },
+
+      { "id": 3, "image": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg", "name": "Piña Colada" },
+
+      { "id": 4, "image": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092", "name": "Bloody Mary" },
+
+      { "id": 5, "image": "https://images.pexels.com/photos/553823/pexels-photo-553823.jpeg", "name": "Cosmopolitan" },
+
+      { "id": 5, "image": "https://images.unsplash.com/photo-1601218873303-9fe0804ff9f5", "name": "Margarita" },
+
+      { "id": 6, "image": "https://images.unsplash.com/photo-1510626176961-4bfb7e81b83b", "name": "Daiquiri" },
+
+      { "id": 7, "image": "https://images.pexels.com/photos/161772/aperol-spritz-cocktail-drink-aperitif-161772.jpeg", "name": "Mai Tai" },
+
+      { "id": 8, "image": "https://images.unsplash.com/photo-1598515214218-c477a2e64a2b", "name": "Tequila Sunrise" },
+
+      { "id": 9, "image": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg", "name": "Negroni" },
+
+      { "id": 10, "image": "https://images.unsplash.com/photo-1564758866810-86a28c10ae14", "name": "Whiskey Sour" },
+
+      { "id": 11, "image": "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg", "name": "Gin Tonic" },
+
+      { "id": 12, "image": "https://images.pexels.com/photos/5946970/pexels-photo-5946970.jpeg", "name": "Old Fashioned" },
+
+      { "id": 13, "image": "https://images.pexels.com/photos/678720/pexels-photo-678720.jpeg", "name": "Long Island Iced Tea" },
+
+      { "id": 14, "image": "https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg", "name": "Caipirinha" },
+
+      { "id": 15, "image": "https://images.pexels.com/photos/1267380/pexels-photo-1267380.jpeg", "name": "Manhattan" },
+
+      { "id": 16, "image": "https://images.pexels.com/photos/678720/pexels-photo-678720.jpeg", "name": "Amaretto Sour" },
+
+      { "id": 17, "image": "https://images.pexels.com/photos/357577/pexels-photo-357577.jpeg", "name": "Sazerac" },
+
+      { "id": 18, "image": "https://images.pexels.com/photos/633827/pexels-photo-633827.jpeg", "name": "Rum Punch" },
+
+      { "id": 19, "image": "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg", "name": "French 75" },
+
+      { "id": 20, "image": "https://images.unsplash.com/photo-1589320877750-517bbdc2a0c7", "name": "Mint Julep" },
+
+      { "id": 21, "image": "https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg", "name": "Paloma" },
+
+      { "id": 22, "image": "https://images.pexels.com/photos/2169912/pexels-photo-2169912.jpeg", "name": "Tom Collins" },
+
+      { "id": 23, "image": "https://images.unsplash.com/photo-1587731581954-170c0f1ed164", "name": "Cuba Libre" },
+
+      { "id": 24, "image": "https://example.com/cocktail-12.jpg", "name": "Screwdriver" },
+
+      { "id": 25, "image": "https://example.com/cocktail-17.jpg", "name": "Bramble" }
+     ]
+  }
+}
