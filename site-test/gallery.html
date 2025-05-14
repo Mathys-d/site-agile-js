@@ -6,49 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/styles.css" />
   <title>Gallery</title>
+
   <style>
     button {
       margin-left: 1em;
     }
 
-    #gallery {
-      gap: 10px;
-      padding: 20px;
-    }
-
-    .mosaic {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    .column {
-      padding: 100px;
-      margin-left: 20%;
-      margin-right: 20%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #gallery img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
     form {
       padding: 10px;
     }
-
-    #booouuuutttonnn{position : absolute;
-            top :5px;
-            right :5px;
-            background-color :rgba(0,0,0,0.5);
-            color :white;
-            border :none;
-            cursor :pointer;
-            border-radius:50%;
-            width:24px;
-            height:24px;}
   </style>
 </head>
 
@@ -68,6 +34,17 @@
 
   <h1>Gallery</h1>
   <div class="section-divider"></div>
+   <div class="carousel">
+    <div class="slides">
+      <div class="slide"><img src="https://imgs.search.brave.com/asebXkMLiYTpQ6yDGnh5yMx-p9xWr27CIfqFZ4Ithdk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cGhvdG9zLWdyYXR1/aXRlL2RldXgtYmVh/dXgtYmFybWFucy1w/b3JpbmctYmllcmUt/YXUtcHViXzEzMDMt/MTk5NjMuanBnP3Nl/bXQ9YWlzX2h5YnJp/ZCZ3PTc0MA" alt="Slide 1"></div>
+      <div class="slide"><img src="https://imgs.search.brave.com/yqS2wS73mTyzTgYLbjLZnnJw-WeTp-MmYoX2_YGxBXw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cGhvdG9zLWdyYXR1/aXRlL2hldXJldXgt/YW1pcy1ib2lyZS1i/aWVyZS1hdS1jb21w/dG9pci1hdS1wdWJf/MTcxMzM3LTEzNTgw/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDA" alt="Slide 2"></div>
+      <div class="slide"><img src="https://imgs.search.brave.com/rsYxM5VIxO9DXmuX3zzl4XTRwRw6TfpmEK6ygj6XEOE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1Lzg5LzUyLzY1/LzM2MF9GXzU4OTUy/NjU3Nl83WnhIQ3Jp/MW5JQllGcG9rV2xO/ek9hZEhtV1pvMDl6/Ri5qcGc" alt="Slide 3"></div>
+      <div class="slide"><img src="https://imgs.search.brave.com/FLTqulppFd5wIbTzpCsvAu_XdFfct9WRQ5R2V1Nfk-c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cGhvdG9zLWdyYXR1/aXRlL2dyb3VwZS1q/ZXVuZXMtaGV1cmV1/eC1wb3J0YW50LXRv/YXN0LWJpZXJlLXMt/YW11c2FudC1kYW5z/LXB1Yl82MzcyODUt/NDA1Ny5qcGc_c2Vt/dD1haXNfaHlicmlk/Jnc9NzQw" alt="Slide 4"></div>
+      <div class="slide"><img src="https://imgs.search.brave.com/18aosGgpSGtH7iMzfTUU05fGuSVBRDkrEChdWGEgZwk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzU0LzE3LzU3/LzM2MF9GXzI1NDE3/NTc5Nl9HQ2tqdDBx/eXZhUUhkM3lOSFRh/eTRhVzVHSjZrbEtx/cy5qcGc" alt="Slide 5"></div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
 
   <button type="button" onclick="toggleImg()">Column</button>
   <button type="button" onclick="toggleNewImg()">More</button>
@@ -79,84 +56,8 @@
 
   <div id="gallery" class="mosaic"></div>
 
-  <script>
-    const feedPage = 3;
-    const gallery = document.getElementById('gallery');
+  <script src="./scripts/scriptsGallery.js"></script>
 
-    async function fetchImages() {
-      for (let i = 0; i < feedPage; i++) {
-        try {
-          const res = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-          const data = await res.json();
-          const drink = data.drinks[0];
-
-          const img = document.createElement('img');
-          img.src = drink.strDrinkThumb;
-          img.alt = drink.strDrink;
-          gallery.appendChild(img);
-
-          await new Promise(resolve => setTimeout(resolve, 300)); 
-        } catch (e) {
-          console.error("Erreur lors du chargement de l'image :", e);
-        }
-      }
-    }
-
-    function toggleImg() {
-      const gallery = document.getElementById("gallery");
-      const btn = document.querySelector("button");
-
-      if (gallery.classList.contains("mosaic")) {
-        gallery.classList.remove("mosaic");
-        gallery.classList.add("column");
-        btn.innerText = "Mosaic";
-      } else {
-        gallery.classList.remove("column");
-        gallery.classList.add("mosaic");
-        btn.innerText = "Column";
-      }
-    }
-
-    function toggleNewImg() {
-      fetchImages();
-    }
-
-    document.getElementById('imageForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const fileInput = document.getElementById('imageInput');
-        const file = fileInput.files[0];
-
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = function (event) {
-
-            const container = document.createElement('div');
-            container.style.position = "relative";
-
-            const img = document.createElement('img');
-            img.src = event.target.result;
-            img.alt = "Image utilisateur";
-
-            const closeButton = document.createElement('button');
-            closeButton.innerText = 'X';
-            closeButton.id = 'booouuuutttonnn';
-
-
-            closeButton.onclick = function () {
-            container.remove();
-            };
-
-            container.appendChild(img);
-            container.appendChild(closeButton);
-            document.getElementById('gallery').appendChild(container);
-        };
-        reader.readAsDataURL(file);
-        });
-
-
-    fetchImages();
-  </script>
 </body>
 
 </html>

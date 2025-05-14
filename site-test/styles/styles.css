@@ -104,13 +104,13 @@ ul li:hover ul.dropdown {
     margin: 20px;
 }
 
-.btn{
+.btn {
     background-color: rgba(235, 225, 211);
     color: teal;
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
-    
+
 }
 
 .btn-new {
@@ -135,7 +135,7 @@ ul li:hover ul.dropdown {
 
 .btn-new {
     border: none;
-    border-bottom:  solid teal;
+    border-bottom: solid teal;
 }
 
 .imagedefond {
@@ -170,23 +170,93 @@ textarea {
     max-height: 60%;
     max-width: 100%;
 }
-select{
-    margin:2px 5px 2px 3px;
+
+select {
+    margin: 2px 5px 2px 3px;
 }
+
 button {
     padding: 4px 8px;
     border-radius: 5px;
 }
+
+/*---------------------------------------------------------------------------------*/
+#gallery {
+    gap: 10px;
+    padding: 20px;
+}
+
+.mosaic {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.column {
+    padding: 100px;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+#gallery img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#booouuuutttonnn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+}
+
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 350px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-height: 40%;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slide {
+      min-width: 100%;
+      transition: opacity 1s ease;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
 
 
 
 @media screen and (min-width: 800px) {
     textarea {
         width: 70%;
-    }input[id^="dose"] {
+    }
+
+    input[id^="dose"] {
         width: 6%;
     }
-    
+
 }
-
-
