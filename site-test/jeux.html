@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Document</title>
+    <style>
+       #grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    justify-items: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+#grille img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+#grille img.flipped {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+    </style>
 </head>
 
 <body>
@@ -22,16 +48,17 @@
         </ul>
     </nav>
     <h1>Game</h1>
-    <div class="section-divider"></div>  
+    <div class="section-divider"></div>
 
-            <button onclick="fetchGame(1)">Easy</button>
-            <button onclick="fetchGame(2)">Medium</button>
-            <button onclick="fetchGame(3)">Hard</button>
+    <button onclick="fetchGame(1)">Easy</button>
+    <button onclick="fetchGame(2)">Medium</button>
+    <button onclick="fetchGame(3)">Hard</button>
 
-            <div id="grille" class="mosaic"></div>
+    <div id="grille" class="mosaic"></div>
 
 
-  <script src="./scripts/scriptsGame.js"></script>
+    <script src="./scripts/scriptsGame.js"></script>
 
 </body>
+
 </html>

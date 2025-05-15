@@ -1,4 +1,4 @@
-let feedPage = 5; 
+let feedPage = 0; 
 let num = 1;
 
 const tab = {

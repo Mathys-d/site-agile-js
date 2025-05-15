@@ -83,3 +83,4 @@ const feedPage = 0;
     }
 
     setInterval(showNextSlide, 3000);
+    
